@@ -38,12 +38,10 @@
                                     </div>
                                 </td>
                                 <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
-                                    <p class="text-black dark:text-white">Jan 13,2023</p>
+                                    <p class="text-black dark:text-white">{{$product_cat->date_convert()}}</p>
                                 </td>
-                                <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
-                                    <p class="inline-flex rounded-full bg-success bg-opacity-10 px-3 py-1 text-sm font-medium text-success">
-                                        Paid
-                                    </p>
+                                <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark flex justify-center">
+                                    <x-admin.state :state="$product_cat->state" :id="$product_cat->id"></x-admin.state>
                                 </td>
                                 <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
                                     <div class="flex items-center justify-center space-x-3.5">

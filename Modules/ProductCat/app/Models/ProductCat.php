@@ -2,6 +2,7 @@
 
 namespace Modules\ProductCat\Models;
 
+use App\trait\admin\date_convert;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -9,7 +10,7 @@ use Modules\ProductCat\Database\Factories\ProductCatFactory;
 
 class ProductCat extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory,SoftDeletes,date_convert;
 
     /**
      * The attributes that are mass assignable.
