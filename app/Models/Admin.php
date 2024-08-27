@@ -23,8 +23,9 @@ class Admin extends Authenticatable
         'email',
         'password',
         'username',
+        'cities',
         'province',
-        'cities'
+        'deleted_at'
     ];
 
     /**
