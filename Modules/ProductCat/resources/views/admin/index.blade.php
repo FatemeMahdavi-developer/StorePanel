@@ -3,6 +3,6 @@
 
 @section('content')
 
-<livewire:productcat::admin.index :$product_cats />
+<livewire:productcat::admin.index  />
 
 @endsection
