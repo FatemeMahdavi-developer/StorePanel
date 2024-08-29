@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   @vite('resources/css/app.css')
-  @livewireStyles
+  @livewireStyles  <link rel="stylesheet" href="{{asset('admin/assets/css/style.css')}}">
+
 </head>
 @if(Route::is('admin.auth.login'))
 <body>
@@ -30,7 +31,8 @@
 
     @vite('resources/js/app.js')
     @livewireScripts
-
+    <script src="{{asset('admin/assets/js/livewire-alert.js')}}"></script>
+    <x-livewire-alert::scripts />
     @yield('footer')
 </body>
 @endif
