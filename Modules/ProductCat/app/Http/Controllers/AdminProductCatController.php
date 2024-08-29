@@ -15,7 +15,6 @@ class AdminProductCatController extends Controller
      */
     public function index()
     {
-        $product_cats=ProductCat::all();
         return view('productcat::admin.index');
     }
 

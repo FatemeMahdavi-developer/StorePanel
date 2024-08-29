@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "12b451f7d2a1cb24dfcdc279b92e3e56",
+    "content-hash": "80c1c19c5b64fc78b93ad86068469027",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1118,6 +1118,7 @@
             "time": "2023-12-03T19:50:20+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "jantinnerezo/livewire-alert",
             "version": "v3.0.2",
             "source": {
@@ -1180,6 +1181,8 @@
             "time": "2024-03-10T10:47:39+00:00"
         },
         {
+=======
+>>>>>>> 09c67d71c5edb5c80118bd857a14e9f337490128
             "name": "laravel/framework",
             "version": "v11.21.0",
             "source": {
