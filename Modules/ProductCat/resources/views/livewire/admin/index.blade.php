@@ -10,7 +10,7 @@
                     <thead>
                         <tr class="bg-gray-2 text-center dark:bg-meta-4">
                             <th class="w-0.5 px-4 py-4 font-medium text-black dark:text-white xl:pl-11">
-                                <input type="checkbox" wire:click="check_all_items" wire:model="check_all">
+                                <input type="checkbox" wire:click="check_all" wire:model="selectAll">
                             </th>
                             <th class="min-w-[220px] px-4 py-4 font-medium text-black dark:text-white xl:pl-11">
                                 نام
@@ -28,9 +28,9 @@
                     </thead>
                     <tbody>
                         @foreach ($product_cats as $product_cat )
-                            <tr class="text-center">
+                            <tr class="text-center"  wire:key="task-{{ $product_cat->id }}">
                                 <td class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">
-                                    <input type="checkbox" wire:model="item_ids.{{$product_cat["id"]}}">
+                                    <input type="checkbox" value="{{$product_cat->id}}" wire:model="items" >
                                 </td>
                                 <td class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">
                                     <div class="font-medium text-black dark:text-white">
@@ -45,7 +45,7 @@
                                 </td>
                                 <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
                                     <div class="flex items-center justify-center space-x-3.5">
-                                        <a wire:navigate href="{{route("admin.productcat.edit",['productcat'=>$product_cat->id])}}" class="hover:text-primary">
+                                        <a wire:navigate href="{{route("admin.productcat.edit",['productcat'=>$product_cat->id])}}" class="hover:text-primary ml-3">
                                             <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18"
                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -92,6 +92,7 @@
                 </table>
                 {{$product_cats->links()}}
                 <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded mt-5" wire:click="delete_all">حذف کلی</button>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mt-5" wire:click="state_all">تغییر وضعیت</button>
             </div>
         </div>
     </div>
