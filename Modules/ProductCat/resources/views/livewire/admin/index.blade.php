@@ -34,12 +34,8 @@
                         @foreach ($product_cats as $product_cat )
                             <tr class="text-center">
                                 <td class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">
-<<<<<<< HEAD
-                                    <input type="checkbox" wire:model="item_ids.{{$product_cat["id"]}}">
-=======
-                                    <input type="checkbox" >
->>>>>>> 09c67d71c5edb5c80118bd857a14e9f337490128
-                                </td>
+                                    <input type="checkbox" wire:model="item_ids.{{$product_cat["id"]}}">'
+                                    </td>
                                 <td class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">
                                     <div class="font-medium text-black dark:text-white">
                                        {{$product_cat->title}}
