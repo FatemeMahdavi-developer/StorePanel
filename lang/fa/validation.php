@@ -197,6 +197,9 @@ return [
         'last_name' => 'نام خانوادگی',
         'password' => 'رمز عبور',
         'password_confirmation' => 'تاییدیه رمز عبور',
+        'seo_url'=>'آدرس سئو',
+        'title_seo'=>'عنوان سئو',
+        'title'=>'عنوان'
     ],
 
 ];
