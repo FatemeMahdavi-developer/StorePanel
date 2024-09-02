@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Modules\ProductBrand\Models\ProductBrand;
 use Modules\ProductCat\Models\ProductCat;
 
 class Create extends Component
@@ -14,6 +15,7 @@ class Create extends Component
     use WithFileUploads,SlugMethod;
     public $parent_id;
     public $seo_url,$seo_title,$title,$note,$pic,$path_pic='';
+    public $brandids=[];
 
     public string $module='';
     public string $module_name='';
@@ -59,7 +61,8 @@ class Create extends Component
          if(empty($inputs['parent_id'])){
             $inputs['parent_id']=null;
          }
-        ProductCat::create($inputs);
+        $product_cat=ProductCat::create($inputs);
+        $product_cat->product_brand()->attach($this->brandids);
         $this->reset(array_keys($inputs));
         session()->flash('message',__("admin.added_successfully",['attribute'=>$this->module_name]));
     }
@@ -67,6 +70,7 @@ class Create extends Component
     public function render()
     {
         $product_cats=ProductCat::where('parent_id',null)->with('sub_cats')->get();
-        return view('productcat::livewire.admin.create',compact('product_cats'));
+        $product_brands=ProductBrand::get(['id','title']);
+        return view('productcat::livewire.admin.create',compact('product_cats','product_brands'));
     }
 }
