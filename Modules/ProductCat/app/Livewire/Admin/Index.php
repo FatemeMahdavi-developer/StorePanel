@@ -22,7 +22,6 @@ class Index extends Component
     public function check_all_items()
 
     {
-        // dd($this->item_ids);
         if($this->check_all){
             foreach($this->product_cats()->pluck('id')->toArray() as $id){
                 $this->item_ids[$id]=true;
@@ -33,12 +32,6 @@ class Index extends Component
 
     }
 
-    // public function gotoPage($page, $pageName = 'page')
-    // {
-    //     $this->setPage($page, $pageName);
-    //     $this->check_all=false;
-    //     $this->item_ids=[];
-    // }
 
 
 

@@ -10,11 +10,7 @@
                     <thead>
                         <tr class="bg-gray-2 text-center dark:bg-meta-4">
                             <th class="w-0.5 px-4 py-4 font-medium text-black dark:text-white xl:pl-11">
-<<<<<<< HEAD
                                 <input type="checkbox" wire:click="check_all_items" wire:model="check_all">
-=======
-                                <input type="checkbox">
->>>>>>> 09c67d71c5edb5c80118bd857a14e9f337490128
                             </th>
                             <th class="min-w-[220px] px-4 py-4 font-medium text-black dark:text-white xl:pl-11">
                                 نام
@@ -34,7 +30,7 @@
                         @foreach ($product_cats as $product_cat )
                             <tr class="text-center">
                                 <td class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">
-                                    <input type="checkbox" wire:model="item_ids.{{$product_cat["id"]}}">'
+                                    <input type="checkbox" wire:model="item_ids.{{$product_cat["id"]}}">
                                     </td>
                                 <td class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">
                                     <div class="font-medium text-black dark:text-white">
