@@ -30,8 +30,8 @@
                         @foreach ($product_cats as $product_cat )
                             <tr class="text-center"  wire:key="task-{{ $product_cat->id }}">
                                 <td class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">
-                                    <input type="checkbox" value="{{$product_cat->id}}" wire:model="items" >
-                                </td>
+     <input type="checkbox" wire:model="item_ids.{{$product_cat["id"]}}">'
+                                    </td>
                                 <td class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">
                                     <div class="font-medium text-black dark:text-white">
                                        {{$product_cat->title}}
