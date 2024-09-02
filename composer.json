@@ -13,6 +13,7 @@
         "mhmiton/laravel-modules-livewire": "^3.0",
         "morilog/jalali": "^3.4",
         "nwidart/laravel-modules": "^11.0",
+        "spatie/laravel-medialibrary": "^11.9",
         "spatie/laravel-permission": "^6.9",
         "ybazli/faker": "^1.0"
     },

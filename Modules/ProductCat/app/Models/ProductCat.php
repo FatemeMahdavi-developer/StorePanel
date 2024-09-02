@@ -6,6 +6,7 @@ use App\trait\admin\date_convert;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\ProductBrand\Models\ProductBrand;
 use Modules\ProductCat\Database\Factories\ProductCatFactory;
 
 class ProductCat extends Model
@@ -33,5 +34,9 @@ class ProductCat extends Model
     }
     public function sub_cats(){
         return $this->hasMany(ProductCat::class,'parent_id');
+    }
+
+    public function product_brand(){
+        return $this->belongsToMany(ProductBrand::class);
     }
 }

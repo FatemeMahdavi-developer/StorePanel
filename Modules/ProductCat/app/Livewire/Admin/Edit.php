@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\WithFileUploads;
+use Modules\ProductBrand\Models\ProductBrand;
 use Modules\ProductCat\Models\ProductCat;
 
 class Edit extends Component
@@ -14,7 +15,7 @@ class Edit extends Component
     use WithFileUploads,SlugMethod;
     public $parent_id;
     public $seo_url,$seo_title,$title,$note,$pic,$path_pic='';
-
+    public $brandids=[];
     public string $module='';
     public string $module_name='';
 
@@ -25,7 +26,7 @@ class Edit extends Component
         $this->module='product_cat';
         $this->module_name='دسته بندی محصول';
         $this->product_cat=$productcat;
-
+        $this->brandids=$productcat->product_brand->pluck("id")->toArray();
         $this->seo_url=$this->product_cat->seo_url;
         $this->seo_title=$this->product_cat->seo_title;
         $this->title=$this->product_cat->title;
@@ -78,7 +79,7 @@ class Edit extends Component
             $inputs['pic']=$this->path_pic;
         }
         $this->product_cat->update($inputs);
-
+        $this->product_cat->product_brand()->sync($this->brandids);
         session()->flash('message','با موفقیت آپدیت شد');
         // return back()->with(['message'=>'با موفقیت آپدیت شد']);
     }
@@ -87,6 +88,7 @@ class Edit extends Component
     public function render()
     {
         $product_cats=ProductCat::where('parent_id',null)->with('sub_cats')->get();
-        return view('productcat::livewire.admin.edit',compact('product_cats'));
+        $product_brands=ProductBrand::get(['id','title']);
+        return view('productcat::livewire.admin.edit',compact('product_cats','product_brands'));
     }
 }

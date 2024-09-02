@@ -10,7 +10,7 @@
                     <thead>
                         <tr class="bg-gray-2 text-center dark:bg-meta-4">
                             <th class="w-0.5 px-4 py-4 font-medium text-black dark:text-white xl:pl-11">
-                                <input type="checkbox" wire:click="check_all_items" wire:model="check_all">
+                                <input type="checkbox" wire:click="check_all" wire:model="selectAll">
                             </th>
                             <th class="min-w-[220px] px-4 py-4 font-medium text-black dark:text-white xl:pl-11">
                                 نام
@@ -28,7 +28,7 @@
                     </thead>
                     <tbody>
                         @foreach ($product_cats as $product_cat )
-                            <tr class="text-center">
+                            <tr class="text-center"  wire:key="task-{{ $product_cat->id }}">
                                 <td class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">
                                     <input type="checkbox" wire:model="item_ids.{{$product_cat["id"]}}">
                                     </td>
@@ -45,7 +45,7 @@
                                 </td>
                                 <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
                                     <div class="flex items-center justify-center space-x-3.5">
-                                        <a wire:navigate href="{{route("admin.productcat.edit",['productcat'=>$product_cat->id])}}" class="hover:text-primary">
+                                        <a wire:navigate href="{{route("admin.productcat.edit",['productcat'=>$product_cat->id])}}" class="hover:text-primary ml-3">
                                             <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18"
                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -92,105 +92,8 @@
                 </table>
                 {{$product_cats->links()}}
                 <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded mt-5" wire:click="delete_all">حذف کلی</button>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mt-5" wire:click="state_all">تغییر وضعیت</button>
             </div>
         </div>
     </div>
 </div>
-
-
-{{--
-<div class="container mx-auto">
-    <div class="flex flex-col">
-        <div class="w-full">
-            <div class="bg-white shadow-md rounded-lg">
-                <div class="bg-gray-100 p-4 rounded-t-lg text-right">
-                    <h4 class="text-lg font-semibold">افزودن دسته بندی محصول</h4>
-                </div>
-                <div class="p-4">
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full bg-white border border-gray-300">
-                            <thead>
-                                <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                                    <th class="py-3 px-4 text-center border border-gray-300">#</th>
-                                    <th class="py-3 px-4 text-center border border-gray-300">نام</th>
-                                    <th class="py-3 px-4 text-center border border-gray-300">تاریخ</th>
-                                    <th class="py-3 px-4 text-center border border-gray-300">وضعیت</th>
-                                    <th class="py-3 px-4 text-center border border-gray-300">عمل</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-gray-700 text-sm">
-                                <tr>
-                                    <td class="py-3 px-4 border border-gray-300">1</td>
-                                    <td class="py-3 px-4 border border-gray-300">ایروانسیا ساپوترا</td>
-                                    <td class="py-3 px-4 border border-gray-300">2017-01-09</td>
-                                    <td class="py-3 px-4 border border-gray-300">
-                                        <div class="inline-block px-2 py-1 text-xs text-white bg-green-500 rounded">فعال</div>
-                                    </td>
-                                    <td class="py-3 px-4 border border-gray-300">
-                                        <a href="#" class="text-white bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded">جزئیات</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="py-3 px-4 border border-gray-300">2</td>
-                                    <td class="py-3 px-4 border border-gray-300">حسن بصری</td>
-                                    <td class="py-3 px-4 border border-gray-300">2017-01-09</td>
-                                    <td class="py-3 px-4 border border-gray-300">
-                                        <div class="inline-block px-2 py-1 text-xs text-white bg-green-500 rounded">فعال</div>
-                                    </td>
-                                    <td class="py-3 px-4 border border-gray-300">
-                                        <a href="#" class="text-white bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded">جزئیات</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="py-3 px-4 border border-gray-300">3</td>
-                                    <td class="py-3 px-4 border border-gray-300">کوزنادی</td>
-                                    <td class="py-3 px-4 border border-gray-300">2017-01-11</td>
-                                    <td class="py-3 px-4 border border-gray-300">
-                                        <div class="inline-block px-2 py-1 text-xs text-white bg-red-500 rounded">غیر فعال</div>
-                                    </td>
-                                    <td class="py-3 px-4 border border-gray-300">
-                                        <a href="#" class="text-white bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded">جزئیات</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="py-3 px-4 border border-gray-300">4</td>
-                                    <td class="py-3 px-4 border border-gray-300">ریزال فخری</td>
-                                    <td class="py-3 px-4 border border-gray-300">2017-01-11</td>
-                                    <td class="py-3 px-4 border border-gray-300">
-                                        <div class="inline-block px-2 py-1 text-xs text-white bg-green-500 rounded">فعال</div>
-                                    </td>
-                                    <td class="py-3 px-4 border border-gray-300">
-                                        <a href="#" class="text-white bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded">جزئیات</a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="bg-gray-100 p-4 rounded-b-lg text-left">
-                    <nav class="inline-flex">
-                        <ul class="inline-flex items-center space-x-1">
-                            <li>
-                                <a class="px-3 py-2 text-gray-500 bg-gray-300 rounded" href="#"><i class="fas fa-chevron-right"></i></a>
-                            </li>
-                            <li>
-                                <a class="px-3 py-2 bg-blue-500 text-white rounded" href="#">1</a>
-                            </li>
-                            <li>
-                                <a class="px-3 py-2 text-gray-500 bg-gray-300 rounded" href="#">2</a>
-                            </li>
-                            <li>
-                                <a class="px-3 py-2 text-gray-500 bg-gray-300 rounded" href="#">3</a>
-                            </li>
-                            <li>
-                                <a class="px-3 py-2 text-gray-500 bg-gray-300 rounded" href="#"><i class="fas fa-chevron-left"></i></a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="columns-3">
-    </div>
-</div> --}}
