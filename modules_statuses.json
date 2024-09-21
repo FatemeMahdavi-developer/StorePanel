@@ -1,4 +1,6 @@
 {
     "ProductCat": true,
-    "ProductBrand": true
+    "ProductBrand": true,
+    "Base": true,
+    "Auth": true
 }
