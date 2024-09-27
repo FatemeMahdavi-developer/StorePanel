@@ -135,15 +135,15 @@ return [
     'prohibited_unless' => 'گزینه :attribute مجاز نیست مگر :other برابر :values باشد',
     'prohibits' => 'گزینه :attribute باعث ممنوعیت :other می باشد',
     'regex' => 'فرمت گزینه :attribute صحیح نمی باشد',
-    'required' => 'تکمیل گزینه :attribute الزامی است',
+    'required' => 'گزینه :attribute الزامی است',
     'required_array_keys' => 'گزینه :attribute باید شامل مقادیر: :values باشد',
-    'required_if' => 'تکمیل گزینه :attribute زمانی که :other دارای مقدار :value است الزامی می باشد',
-    'required_if_accepted' => 'تکمیل گزینه :attribute زمانی که :other انتخاب شده الزامی است',
-    'required_unless' => 'تکمیل گزینه :attribute الزامی می باشد مگر :other دارای مقدار :values باشد',
-    'required_with' => 'تکمیل گزینه :attribute زمانی که مقدار :values درصد است الزامی است',
-    'required_with_all' => 'تکمیل گزینه :attribute زمانی که مقادیر :values درصد است الزامی می باشد',
-    'required_without' => 'تکمیل گزینه :attribute زمانی که مقدار :values درصد نیست الزامی است',
-    'required_without_all' => 'تکمیل گزینه :attribute زمانی که هیچ کدام از مقادیر :values درصد نیست الزامی است',
+    'required_if' => 'گزینه :attribute زمانی که :other دارای مقدار :value است الزامی می باشد',
+    'required_if_accepted' => 'گزینه :attribute زمانی که :other انتخاب شده الزامی است',
+    'required_unless' => 'گزینه :attribute الزامی می باشد مگر :other دارای مقدار :values باشد',
+    'required_with' => 'گزینه :attribute زمانی که مقدار :values درصد است الزامی است',
+    'required_with_all' => 'گزینه :attribute زمانی که مقادیر :values درصد است الزامی می باشد',
+    'required_without' => 'گزینه :attribute زمانی که مقدار :values درصد نیست الزامی است',
+    'required_without_all' => 'گزینه :attribute زمانی که هیچ کدام از مقادیر :values درصد نیست الزامی است',
     'same' => 'گزینه های :attribute و :other باید یکی باشند',
     'size' => [
         'array' => 'گزینه :attribute باید شامل :size آیتم باشد',
@@ -199,7 +199,9 @@ return [
         'password_confirmation' => 'تاییدیه رمز عبور',
         'seo_url'=>'آدرس سئو',
         'title_seo'=>'عنوان سئو',
-        'title'=>'عنوان'
+        'title'=>'عنوان',
+        'seo_title'=>'عنوان سئو',
+        'image'=>'تصویر'
     ],
 
 ];

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   @vite('resources/css/app.css')
   @livewireStyles  <link rel="stylesheet" href="{{asset('admin/assets/css/style.css')}}">
-
+  <script src="{{asset("admin/assets/js/ckeditor5.js")}}"></script>
 </head>
 @if(Route::is('admin.auth.login'))
 <body>
@@ -27,18 +27,18 @@
                 @yield('content')
             </main>
         </div>
-     
+
     </div>
     @endauth
     @guest
-        
+
     <div class="flex h-screen overflow-hidden">
         <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
             <main class="mt-6">
                 @yield('content')
             </main>
         </div>
-        
+
     </div>
     @endguest
 

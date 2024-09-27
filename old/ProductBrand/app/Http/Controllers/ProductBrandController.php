@@ -26,14 +26,6 @@ class ProductBrandController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request): RedirectResponse
-    {
-        //
-    }
-
-    /**
      * Show the specified resource.
      */
     public function show($id)
