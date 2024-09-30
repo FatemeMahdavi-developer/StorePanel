@@ -4,6 +4,7 @@ namespace Modules\Product\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Modules\Base\Traits\DateConvert;
 use Spatie\Image\Enums\Fit;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -13,7 +14,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class ProductBrand extends Model implements HasMedia
 {
-    use HasFactory,InteractsWithMedia;
+    use HasFactory,InteractsWithMedia,DateConvert;
 
     /**
      * The attributes that are mass assignable.
@@ -22,7 +23,8 @@ class ProductBrand extends Model implements HasMedia
         'seo_url',
         'seo_title',
         'title',
-        'note'
+        'note',
+        'state'
     ];
 
     public function registerMediaConversions(?Media $media = null): void

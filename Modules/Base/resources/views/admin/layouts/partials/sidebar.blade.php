@@ -161,7 +161,7 @@
                     </li>
                     <li>
                         <a wire:navigate class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
-                        href=""
+                        href="{{route("admin.productbrand.index")}}"
                         :class="page === 'ecommerce' && '!text-white'">
                         لیست برند ها
                         </a>

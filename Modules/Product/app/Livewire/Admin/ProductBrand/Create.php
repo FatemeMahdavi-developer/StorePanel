@@ -8,7 +8,7 @@ use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 use Modules\Product\Models\Admin\ProductBrand;
-use Modules\ProductBrand\Models\ProductBrand as ModelsProductBrand;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Create extends Component
 {
@@ -16,13 +16,9 @@ class Create extends Component
 
     public $seo_url,$seo_title,$title,$image,$pathImage,$note,$moduleTitle,$model;
 
-    public function __construct()
-    {
-        $this->moduleTitle='برند محصول';
-        $this->model=ModelsProductBrand::class;
-    }
-
     public function mount(){
+        $this->moduleTitle='برند محصول';
+        $this->model=ProductBrand::class;
         // $this->authorize('create',$this->model);
     }
 
@@ -50,7 +46,6 @@ class Create extends Component
         $this->image=$value;
         $this->pathImage=$value;
     }
-
 
     public function save(){
         $inputs=$this->validate();

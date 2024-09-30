@@ -1,9 +1,9 @@
-@props(['type'=>'text','title'=>'','name'=>'','placeholder'=>'','dir'=>'rtl','class'=>'my-3'])
+@props(['type'=>'text','title'=>'','name'=>'','id'=>'','placeholder'=>'','dir'=>'rtl','class'=>'w-full sm:w-1/2'])
 
 <div class="{{$class}}">
     @if($title)
-        <label class="mb-3 block text-sm font-medium text-black dark:text-white">{{$title}}</label>
+        <label class="mb-3 block text-sm font-medium text-black dark:text-white" for="{{$name}}">{{$title}}</label>
     @endif
-    <input type="{{$type}}" wire:model="{{$name}}" dir="{{$dir}}" @if($placeholder)placeholder="{{$placeholder}}"@endif class="w-1/2 rounded-lg border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"/>
+    <input type="{{$type}}" wire:model="{{$name}}" @if($id) id="{{$id}}" @else id="{{$name}}" @endif @if($placeholder)placeholder="{{$placeholder}}"@endif class="w-full rounded border border-stroke bg-gray px-4.5 py-3 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" >
     @error($name)<div class="text-red-600">{{$message}}</div>@enderror
 </div>
