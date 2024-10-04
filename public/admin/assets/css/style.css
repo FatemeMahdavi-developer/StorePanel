@@ -1,3 +1,9 @@
 .swal2-container {
     z-index: 11111;
 }
+
+
+.ck-editor__editable
+{
+    min-height: 200px !important;
+}

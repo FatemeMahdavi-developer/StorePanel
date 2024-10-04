@@ -6,7 +6,7 @@
             <div class="w-full">
                 <p class="text-base leading-relaxed text-[#2d3747] dark:text-[#34D399]">{{session()->get('message')}}</p>
             </div>
-          </div>
+        </div>
     @endif
     {{$slot}}
 </form>

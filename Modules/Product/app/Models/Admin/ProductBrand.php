@@ -4,7 +4,9 @@ namespace Modules\Product\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Base\Traits\DateConvert;
+use Modules\Product\Enums\StateEnum;
 use Spatie\Image\Enums\Fit;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -14,7 +16,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class ProductBrand extends Model implements HasMedia
 {
-    use HasFactory,InteractsWithMedia,DateConvert;
+    use HasFactory,InteractsWithMedia,DateConvert,SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -26,6 +28,13 @@ class ProductBrand extends Model implements HasMedia
         'note',
         'state'
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'state' => StateEnum::class,
+        ];
+    }
 
     public function registerMediaConversions(?Media $media = null): void
     {

@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('title');
             $table->string('pic')->nullable();
             $table->text('note')->nullable();
-            $table->enum('state',['active','disable'])->default('disable');
-            $table->enum('state_main',['active','disable'])->default('disable');
+            $table->enum('state',[1,2])->nullable();
+            $table->enum('state_main',[1,2])->nullable();
             $table->integer('order')->default(0);
             $table->softDeletes();
             $table->timestamps();
