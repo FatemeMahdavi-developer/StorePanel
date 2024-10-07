@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_brands', function (Blueprint $table) {
+        Schema::create('productcats', function (Blueprint $table) {
             $table->id();
             makeDefaultColumn($table);
             $table->string('seo_url')->unique();
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_brands');
+        Schema::dropIfExists('productcats');
     }
 };

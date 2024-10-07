@@ -4,6 +4,7 @@ namespace Modules\Product\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Base\Traits\DateConvert;
 use Modules\Base\Enums\StateEnum;
@@ -12,12 +13,12 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-// use Modules\Product\Database\Factories\Admin/ProductBrandFactory;
+// use Modules\Product\Database\Factories\Admin/productcatFactory;
 
-class ProductBrand extends Model implements HasMedia
+class productcat extends Model implements HasMedia
 {
     use HasFactory,InteractsWithMedia,DateConvert,SoftDeletes;
-
+    
     /**
      * The attributes that are mass assignable.
      */
@@ -26,7 +27,8 @@ class ProductBrand extends Model implements HasMedia
         'seo_title',
         'title',
         'note',
-        'state'
+        'state',
+        'id'
     ];
 
     protected function casts(): array
@@ -35,7 +37,6 @@ class ProductBrand extends Model implements HasMedia
             'state' => StateEnum::class,
         ];
     }
-
     public function registerMediaConversions(?Media $media = null): void
     {
         $this
@@ -44,8 +45,8 @@ class ProductBrand extends Model implements HasMedia
             ->nonQueued();
     }
 
-    // protected static function newFactory(): Admin/ProductBrandFactory
-    // {
-    //     // return Admin/ProductBrandFactory::new();
-    // }
+    public function product_cat_brand():BelongsToMany
+    {   
+        return $this->belongsToMany(ProductBrand::class);
+    }
 }

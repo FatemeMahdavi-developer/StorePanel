@@ -5,7 +5,7 @@ namespace Modules\Base\Classes\Admin;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Modules\Product\Enums\StateEnum;
+use Modules\Base\Enums\StateEnum;
 
 class ActionAll extends Component
 {

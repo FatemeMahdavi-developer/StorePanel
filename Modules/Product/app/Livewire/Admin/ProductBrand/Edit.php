@@ -6,10 +6,6 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use Modules\Product\Models\Admin\ProductBrand;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
-
-use Illuminate\Support\Str;
 use Modules\Base\Traits\UpdatingValidation;
 use Modules\Product\Livewire\Validation\Admin\ProductBrandValidation;
 
