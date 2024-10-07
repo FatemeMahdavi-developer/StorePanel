@@ -6,8 +6,8 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
+use Modules\Base\Enums\StateEnum;
 use Modules\Base\Traits\UpdatingValidation;
-use Modules\Product\Enums\StateEnum;
 use Modules\Product\Livewire\Validation\Admin\ProductBrandValidation;
 use Modules\Product\Models\Admin\ProductBrand;
 
