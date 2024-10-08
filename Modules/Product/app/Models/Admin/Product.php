@@ -6,15 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Base\Traits\DateConvert;
-use Modules\Base\Enums\StateEnum;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Image\Enums\Fit;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
+// use Modules\Product\Database\Factories\ProductFactory;
 
-// use Modules\Product\Database\Factories\Admin/ProductBrandFactory;
-
-class ProductBrand extends Model implements HasMedia
+class product extends Model
 {
     use HasFactory,InteractsWithMedia,DateConvert,SoftDeletes;
 
@@ -29,13 +26,6 @@ class ProductBrand extends Model implements HasMedia
         'state'
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'state' => StateEnum::class,
-        ];
-    }
-
     public function registerMediaConversions(?Media $media = null): void
     {
         $this
@@ -43,9 +33,8 @@ class ProductBrand extends Model implements HasMedia
             ->fit(Fit::Contain, 300, 300)
             ->nonQueued();
     }
-
-    // protected static function newFactory(): Admin/ProductBrandFactory
+    // protected static function newFactory(): ProductFactory
     // {
-    //     // return Admin/ProductBrandFactory::new();
+    //     // return ProductFactory::new();
     // }
 }
