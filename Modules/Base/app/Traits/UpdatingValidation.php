@@ -9,10 +9,10 @@ trait UpdatingValidation
         return $this->validationClass()::rules();
     }
 
-    //  protected function prepareForValidation($attributes): array
-    //  {
-    //      return $this->validationClass()::prepareForValidation($attributes);
-    //  }
+     protected function prepareForValidation($attributes): array
+     {
+         return $this->validationClass()::prepareForValidation($attributes);
+     }
 
      public function updated($propertyName)
      {

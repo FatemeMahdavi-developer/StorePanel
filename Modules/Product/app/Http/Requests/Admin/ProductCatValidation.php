@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
 
-class ProductCatValidation extends FormRequest
+class ProductCatValidation
 {
     /**
      * Get the validation rules that apply to the request.
@@ -23,12 +23,11 @@ class ProductCatValidation extends FormRequest
     }
 
 
-
-    // public function prepareForValidation($attributes):array
-    // {
-    //     $attributes['seo_url'] = Str::slug($attributes['seo_url'], '-', null);
-    //     return $attributes;
-    // }
+    public static function prepareForValidation($attributes):array
+    {
+        $attributes['seo_url'] = Str::slug($attributes['seo_url'], '-', null);
+        return $attributes;
+    }
 
 
     /**

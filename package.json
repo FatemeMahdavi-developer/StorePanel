@@ -39,6 +39,7 @@
         "apexcharts": "^3.36.3",
         "flatpickr": "^4.6.13",
         "install": "^0.13.0",
+        "jquery": "^3.7.1",
         "jsvectormap": "^1.5.1"
     }
 }

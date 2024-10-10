@@ -7,9 +7,9 @@
     'value' => [],
     'sub_method' => '',
     'placeholder' => '',
-    'class' => '' 
+    'class' => ''
 ])
-{{-- 
+{{--
 <div wire:ignore class="form-group {{$class}}">
     <label for="{{$name}}" class="block text-sm font-medium text-gray-700">{{$title}}</label>
     <select multiple wire:model="{{$name}}" id="{{$name}}" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
@@ -25,7 +25,7 @@
             </x-base::admin.sub_option>
         @endforeach
     </select>
-</div> 
+</div>
 
 --}}
 
@@ -47,7 +47,7 @@
     x-data="dropdown()"
     x-init="loadOptions()"
     class="flex flex-col items-center"
-    > 
+    >
     <input
         name="values"
         type="hidden"
@@ -205,14 +205,14 @@
             this.selected.splice(this.selected.lastIndexOf(index), 1);
             this.options[index].selected = false;
           }
-          @this.set('product_brands_selected', this.selectedValues());
+          @this.set("{{$name}}", this.selectedValues());
         },
         remove(index, option) {
          if (this.options[option]) {
             this.options[option].selected = false;
             this.selected.splice(index, 1);
           }
-          @this.set('product_brands_selected', this.selectedValues());
+          @this.set("{{$name}}", this.selectedValues());
         },
         loadOptions() {
           const options = document.getElementById("select").options;

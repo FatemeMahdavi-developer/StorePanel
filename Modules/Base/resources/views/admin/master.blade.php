@@ -4,11 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   @vite('resources/css/app.css')
-  <link
-  href="https://cdn.jsdelivr.net/npm/@tailwindcss/custom-forms@0.2.1/dist/custom-forms.css"
-  rel="stylesheet"
-/>
-  @livewireStyles 
+  <link href="https://cdn.jsdelivr.net/npm/@tailwindcss/custom-forms@0.2.1/dist/custom-forms.css" rel="stylesheet"/>
+  @livewireStyles
    <link rel="stylesheet" href="{{asset('admin/assets/css/style.css')}}">
   <script src="{{asset("admin/assets/js/ckeditor5.js")}}"></script>
 </head>

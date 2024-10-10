@@ -8,8 +8,8 @@ use Modules\Product\Models\Admin\ProductBrand;
 
 class Index extends ActionAll
 {
-    public $items = [];
-    public $selectAll = false;
+    public $items=[];
+    public $selectAll=false;
     public int $paginate=3;
     public $moduleTitle;
 

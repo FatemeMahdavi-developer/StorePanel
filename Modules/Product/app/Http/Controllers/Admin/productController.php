@@ -3,6 +3,7 @@
 namespace Modules\Product\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Modules\Product\Models\Admin\product;
 
 class productController extends Controller
 {
@@ -11,8 +12,7 @@ class productController extends Controller
      */
     public function index()
     {
-
-        return view('product::index');
+        return view('product::admin.product.index');
     }
 
     /**
@@ -34,15 +34,9 @@ class productController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(product $product)
     {
-        return view('product::edit');
+        return view('product::admin.product.edit',compact('product'));
     }
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy($id)
-    {
-        //
-    }
+
 }
