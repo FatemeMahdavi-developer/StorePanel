@@ -56,7 +56,7 @@ class Create extends Component
         }
         $this->resetExcept(['moduleTitle','model','product_brands']);
 
-        return  $this->alert('success',__('admin.added_successfully',['module' => $this->moduleTitle]), [
+        return $this->alert('success',__('admin.added_successfully',['module' => $this->moduleTitle]), [
             'position' => 'top-end',
         ]);
     }

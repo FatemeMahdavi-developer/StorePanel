@@ -203,7 +203,8 @@ return [
         'seo_title'=>'عنوان سئو',
         'image'=>'تصویر',
         'cat_id'=>'دسته بندی',
-        'brand_id'=>'برند'
+        'brand_id'=>'برند',
+        'parent_id'=>'دسته بندی'
     ],
 
 ];

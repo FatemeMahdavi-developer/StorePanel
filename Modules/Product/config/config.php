@@ -3,7 +3,7 @@
 return [
     'name' => 'Product',
     'brandModuleTitle'=>env('brandModuleTitle','برند محصول'),
-    'categoryModuleTitle'=>env('categoryModuleTitle','دسته بندی محصول'),
+    'categoryModuleTitle'=>env('categoryModuleTitle','دسته بندی'),
     'productModuleTitle'=>env('productModuleTitle','محصول'),
 
 ];

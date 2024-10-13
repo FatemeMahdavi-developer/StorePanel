@@ -28,8 +28,8 @@
                     @endslot
                 </x-base::admin.input>
             </div>
-            {{-- <x-base::admin.select2_multiple name="product_brands_selected" title="برند" :items="$product_brands" :value="$product_brands_selected" ></x-base::admin.input> --}}
 
+            <x-base::admin.select_recursive name="parent_id" first_option="دسته بندی اصلی" title="دسته بندی" :options="$productCats" :value="$parent_id" ></x-base::admin.select_recursive>
 
             <div>
                 <label class="mb-3 block text-sm font-medium text-black dark:text-white">

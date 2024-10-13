@@ -18,7 +18,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 class productcat extends Model implements HasMedia
 {
     use HasFactory,InteractsWithMedia,DateConvert,SoftDeletes;
-    
+
     /**
      * The attributes that are mass assignable.
      */
@@ -28,7 +28,8 @@ class productcat extends Model implements HasMedia
         'title',
         'note',
         'state',
-        'id'
+        'id',
+        'parent_id'
     ];
 
     protected function casts(): array
@@ -46,7 +47,11 @@ class productcat extends Model implements HasMedia
     }
 
     public function product_cat_brand():BelongsToMany
-    {   
+    {
         return $this->belongsToMany(ProductBrand::class);
+    }
+
+    public function subCats(){
+        return $this->belongsTo(productcat::class,'parent_id');
     }
 }

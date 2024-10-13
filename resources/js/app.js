@@ -1,2 +1,2 @@
-import $ from "jquery";
-window.$ = $;
+// import $ from "jquery";
+// window.$ = $;
