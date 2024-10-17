@@ -13,7 +13,8 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 // use Modules\Product\Database\Factories\ProductFactory;
 
-class product extends Model implements HasMedia
+
+class Product extends Model implements HasMedia
 {
     use HasFactory,InteractsWithMedia,InteractsWithMedia,DateConvert,SoftDeletes;
 
@@ -43,6 +44,10 @@ class product extends Model implements HasMedia
             ->addMediaConversion('preview')
             ->fit(Fit::Contain, 300, 300)
             ->nonQueued();
+    }
+
+    public function price(){
+        return $this->hasMany(productPrice::class,'product_id');
     }
     // protected static function newFactory(): ProductFactory
     // {

@@ -10,6 +10,6 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('productbrand',ProductBrandController::class)->except(['store','update','destroy']);
     Route::resource('productcat',ProductCatController::class)->except(['store','update','destroy']);
     Route::resource('product',productController::class)->except(['store','update','destroy']);
-    Route::resource('price/{product_id}',productPriceController::class)->except(['store','update','destroy']);
+    Route::resource('product.price',productPriceController::class)->except(['store','update','destroy'])->shallow();
 
 });

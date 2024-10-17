@@ -9,4 +9,8 @@ trait DateConvert
     public function dateConvert($column='created_at'){
         return Jalalian::forge($this->$column)->format("H:i Y/m/d");
     }
+
+    public function dateConvertAgo($column='created_at'){
+        return Jalalian::forge($this->$column)->ago();
+    }
 }

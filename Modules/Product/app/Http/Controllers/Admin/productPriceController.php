@@ -4,23 +4,24 @@ namespace Modules\Product\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Modules\Product\Models\Admin\product;
 
 class productPriceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(product $product)
     {
-        return view('product::index');
+        return view('product::admin.price.index',compact('product'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(product $product)
     {
-        return view('product::admin.price.create');
+        return view('product::admin.price.create',compact('product'));
     }
 
     /**

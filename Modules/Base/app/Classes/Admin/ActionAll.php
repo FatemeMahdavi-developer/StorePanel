@@ -92,8 +92,9 @@ class ActionAll extends Component
     public function StateAllViaField(){
         foreach($this->items as $id){
             $module=$this->model::findOrFail($id);
+            dd($this->field);
             if(!empty($this->field)){
-                $module->update(['status'=>$this->field]);
+                $module->update(['price_active'=>$this->field]);
             }
         }
         $this->reset("selectAll","items");
@@ -102,4 +103,7 @@ class ActionAll extends Component
     public function updatingPaginators(){
         $this->reset("selectAll","items");
     }
+
+
+    
 }

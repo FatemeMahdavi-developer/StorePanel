@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('product_prices', function (Blueprint $table) {
             $table->id();
             $table->string("price");
-            $table->string("pricent");
+            $table->string("discount")->nullable();
             $table->string("price_code");
             $table->integer("number");
             $table->integer("numberlimit");
-            $table->string("price_active");
+            $table->boolean("price_active")->nullable();
             $table->foreignId('product_id')->references('id')->on('products')->onUpdate('cascade')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();

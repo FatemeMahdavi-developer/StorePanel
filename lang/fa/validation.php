@@ -204,7 +204,11 @@ return [
         'image'=>'تصویر',
         'cat_id'=>'دسته بندی',
         'brand_id'=>'برند',
-        'parent_id'=>'دسته بندی'
+        'parent_id'=>'دسته بندی',
+        'price'=>'قیمت',
+        'number'=>'تعداد',
+        'discount'=>'تخفیف',
+        'numberlimit'=>'حداقل موجودی',
     ],
 
 ];

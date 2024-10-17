@@ -11,7 +11,10 @@ trait UpdatingValidation
 
      protected function prepareForValidation($attributes): array
      {
-         return $this->validationClass()::prepareForValidation($attributes);
+        // if(method_exists($this->validationClass(),'prepareForValidation')){
+            return $this->validationClass()::prepareForValidation($attributes);
+        // }
+        // return [];
      }
 
      public function updated($propertyName)
