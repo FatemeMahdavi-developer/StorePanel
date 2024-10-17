@@ -21,21 +21,16 @@ class Edit extends Component
 
     public function mount($product)
     {
-        $this->moduleTitle=config('product.brandModuleTitle');
+        $this->moduleTitle=config('product.productModuleTitle');
         $this->model='product';
-
         $this->product=$product;
         $this->seo_url=$this->product->seo_url;
         $this->seo_title=$this->product->seo_title;
         $this->title=$this->product->title;
         $this->cat_id=$this->product->cat_id;
-
         $productcat=productcat::find($this->cat_id);
         $this->productBrands=$productcat->product_cat_brand->pluck('title','id')->toArray();
-
         $this->brand_id=$this->product->brand_id;
-
-
         $this->image=$product->getMedia('image')->first()?->getUrl() ?? '';
         $this->note=$this->product->note;
     }

@@ -40,7 +40,7 @@ class Index extends ActionAll
     }
 
     public function products(){
-        return product::orderBy('id','DESC')->paginate($this->paginate);
+        return product::orderBy('id','DESC')->with('price')->paginate($this->paginate);
     }
 
     public function render()

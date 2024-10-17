@@ -13,49 +13,78 @@
                                 <input type="checkbox" wire:click="checkAll" wire:model="selectAll">
                             </th>
                             <th class="min-w-[220px] px-4 py-4 font-medium text-black dark:text-white xl:pl-11">
-                                نام
+                                قیمت مشتری (تومان)
                             </th>
                             <th class="min-w-[150px] px-4 py-4 font-medium text-black dark:text-white">
-                                قیمت
+                                درصد تخفیف (مشتری)
                             </th>
-                            <th class="min-w-[150px] px-4 py-4 font-medium text-black dark:text-white">
-                                تاریخ
+                            {{-- <th class="min-w-[120px] px-4 py-4 font-medium text-black dark:text-white">
+                                درصد تخفیف ویژه (زمان دار)
+                            </th> --}}
+                            <th class="min-w-[120px] px-4 py-4 font-medium text-black dark:text-white">
+                                کد قیمت
+                            </th>
+                            <th class="min-w-[120px] px-4 py-4 font-medium text-black dark:text-white">
+                                موجودی (مشتری)
                             </th>
                             <th class="min-w-[120px] px-4 py-4 font-medium text-black dark:text-white">
                                 وضعیت
                             </th>
+                            {{-- <th class="min-w-[120px] px-4 py-4 font-medium text-black dark:text-white">
+                               رنگ
+                            </th>
+                            <th class="min-w-[120px] px-4 py-4 font-medium text-black dark:text-white">
+                                ویژگی
+                             </th> --}}
+                             <th class="min-w-[120px] px-4 py-4 font-medium text-black dark:text-white">
+                                تاریخ
+                             </th>
                             <th class="px-4 py-4 font-medium text-black dark:text-white">
                                 #
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        @if($products[0])
-                            @foreach ($products as $product )
-                                <tr class="text-center"  wire:key="task-{{ $product->id }}">
+                        @if($productPrices[0])
+                            @foreach ($productPrices as $price )
+                                <tr class="text-center"  wire:key="task-{{ $price->id }}">
                                     <td class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">
-                                        <input type="checkbox" value="{{$product->id}}" wire:model="items" >
+                                        <input type="checkbox" value="{{$price->id}}" wire:model="items" >
                                     </td>
                                     <td class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">
                                         <div class="font-medium text-black dark:text-white">
-                                            {{$product->title}}
+                                            {{number_format($price->price)}}
                                         </div>
                                     </td>
                                     <td class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">
-                                        <a href="{{route("admin.product.price.index",['product'=>$product->id])}}" class="font-medium text-black dark:text-white">
-                                            {{$product->price()->count()}}
-                                        </a>
+                                        <div class="font-medium text-black dark:text-white">
+                                            {{$price->discount ?? "ندارد"}}
+                                        </div>
                                     </td>
-                                    <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
-                                        <p class="text-black dark:text-white">{{$product->dateConvert()}}</p>
+                                    <td class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">
+                                        <div class="font-medium text-black dark:text-white">
+                                            {{$price->price_code}}
+                                        </div>
+                                    </td>
+                                    <td class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">
+                                      {{$price->number}}
                                     </td>
                                     <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark flex justify-center">
-                                        <x-base::admin.state :state="$product->state->value" :id="$product->id" methodName="changeState({{$product->id}})"></x-base::admin.state>
+                                        <x-base::admin.state :state="$price->price_active->value" :id="$price->id" methodName="changeState({{$price->id}})"></x-base::admin.state>
                                     </td>
+                                    {{-- <td class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">--</td>
+                                    <td class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">--</td> --}}
+                                    <td class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">{{$price->dateConvert()}}</td>
+                                    {{-- <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+                                        <p class="text-black dark:text-white">{{$price->dateConvert()}}</p>
+                                    </td> --}}
+                                    {{-- <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark flex justify-center">
+                                        <x-base::admin.state :state="$price->state" :id="$price->id" methodName="changeState({{$price->id}})"></x-base::admin.state>
+                                    </td> --}}
+                                    
                                     <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
                                         <div class="flex items-center justify-center space-x-3.5">
-                                            <a href="{{route("admin.product.price.create",['product'=>$product->id])}}" class=""> قیمت</a>
-                                            <a wire:navigate href="{{route("admin.product.edit",['product'=>$product->id])}}" class="hover:text-primary ml-3">
+                                            <a wire:navigate href="" class="hover:text-primary ml-3">
                                                 <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18"
                                                     fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -66,7 +95,7 @@
                                                         fill="" />
                                                 </svg>
                                             </a>
-                                            <button wire:click="delete({{$product->id}})"   >
+                                            <button wire:click="delete({{$price->id}})"   >
                                                 <svg width="18" height="18" viewBox="0 0 18 18"
                                                     fill="darkred" xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -94,13 +123,11 @@
                         @endif
                     </tbody>
                 </table>
-                @if($products[0])
-                    <div class="pt-4">
-                        {{$products->links()}}
-                    </div>
-                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded mt-5" wire:click='actionAll("deleteAll")'>حذف کلی</button>
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mt-5" wire:click="actionAll('stateAll')">تغییر وضعیت</button>
-                @endif
+                <div class="pt-4">
+                    {{$productPrices->links()}}
+                </div>
+                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded mt-5" wire:click='actionAll("deleteAll")'>حذف کلی</button>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mt-5" wire:click="actionAll('StateAllViaField','price_active')">تغییر وضعیت</button>
             </div>
         </div>
     </div>
