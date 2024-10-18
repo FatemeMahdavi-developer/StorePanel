@@ -15,7 +15,7 @@ use Modules\Product\Models\Admin\Product;
 
 class Create extends Component
 {
-    use WithFileUploads,AuthorizesRequests,UpdatingValidation,LivewireAlert;
+    use AuthorizesRequests,UpdatingValidation,LivewireAlert;
 
 
     public $price,$discount,$price_code,$number,$numberlimit,$moduleTitle;
@@ -30,6 +30,7 @@ class Create extends Component
     {
         return productPriceRequest::class;
     }
+    
     public function save(){
         $inputs=$this->validate();
         $this->product->price()->create($inputs);
@@ -43,4 +44,3 @@ class Create extends Component
         return view('product::livewire.admin.price.create');
     }
 }
-    

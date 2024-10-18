@@ -92,7 +92,6 @@ class ActionAll extends Component
     public function StateAllViaField(){
         foreach($this->items as $id){
             $module=$this->model::findOrFail($id);
-            dd($this->field);
             if(!empty($this->field)){
                 $module->update(['price_active'=>$this->field]);
             }
@@ -105,5 +104,5 @@ class ActionAll extends Component
     }
 
 
-    
+
 }

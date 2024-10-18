@@ -13,7 +13,7 @@ class Index extends ActionAll
     public $selectAll=false;
     public int $paginate=3;
     public $moduleTitle;
-    public $product;
+    public $product,$price_active;
 
     public function checkAll()
     {
@@ -30,7 +30,7 @@ class Index extends ActionAll
     public function changeState(productPrice $productPrice){
         $price_active=($productPrice->price_active->value==StateEnum::ACTIVE->value) ? StateEnum::DISABLE->value : StateEnum::ACTIVE->value;
         $productPrice->update(['price_active'=>$price_active]);
-    }    
+    }
     public function delete(productPrice $productPrice){
         $productPrice->delete();
     }
@@ -42,9 +42,25 @@ class Index extends ActionAll
             return $this->action($action,productPrice::class);
         }
     }
-    
+
+    public function changeStateAll(){
+        if(empty($this->items)){
+            return $this->alert('error',__('common.msg.choose'), [
+                'position' => 'top-end',
+            ]);
+        }
+        foreach($this->items as $id){
+            $module=productPrice::find($id);
+            $state=($module->price_active->value===StateEnum::ACTIVE->value) ? StateEnum::DISABLE->value : StateEnum::ACTIVE->value;
+            $module->update(['price_active'=>$state]);
+        }
+        $this->reset("selectAll","items");
+    }
+
     public function render()
     {
-        return view('product::livewire.admin.price.index',['productPrices'=>$this->product_price()]);
+        return view('product::livewire.admin.price.index',[
+            'productPrices'=>$this->product_price()
+        ]);
     }
 }

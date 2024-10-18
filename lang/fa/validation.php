@@ -71,7 +71,7 @@ return [
     'hex_color'=>'فیلد :attribute باید یک رنگ هگزادسیمال معتبر باشد.',
     'in' => 'گزینه انتخابی :attribute صحیح نمی باشد',
     'in_array' => 'گزینه :attribute در :other وجود ندارد',
-    'integer' => 'گزینه :attribute باید از نوع عددی باشد',
+    'integer' => 'گزینه :attribute باید عدد باشد',
     'ip' => 'گزینه :attribute باید آی پی آدرس باشد',
     'ipv4' => 'گزینه :attribute باید آی پی آدرس ورژن 4 باشد',
     'ipv6' => 'گزینه :attribute باید آی پی آدرس ورژن 6 باشد',
@@ -117,7 +117,7 @@ return [
     'multiple_of' => 'گزینه :attribute باید حاصل ضرب :value باشد',
     'not_in' => 'گزینه انتخابی :attribute صحیح نمی باشد',
     'not_regex' => 'فرمت گزینه :attribute صحیح نمی باشد',
-    'numeric' => 'گزینه :attribute باید از نوع عددی باشد',
+    'numeric' => 'گزینه :attribute باید عدد باشد',
     'password' => [
         'letters' => 'گزینه :attribute باید حداقل شامل یک حرف باشد',
         'mixed' => 'گزینه :attribute باید شامل حداقل یک حرف بزرگ و یک حرف کوچک باشد',

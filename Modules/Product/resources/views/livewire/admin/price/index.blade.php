@@ -81,10 +81,9 @@
                                     {{-- <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark flex justify-center">
                                         <x-base::admin.state :state="$price->state" :id="$price->id" methodName="changeState({{$price->id}})"></x-base::admin.state>
                                     </td> --}}
-                                    
                                     <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
                                         <div class="flex items-center justify-center space-x-3.5">
-                                            <a wire:navigate href="" class="hover:text-primary ml-3">
+                                            <a wire:navigate href="{{route('admin.price.edit',['price'=>$price->id])}}" class="hover:text-primary ml-3">
                                                 <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18"
                                                     fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -118,7 +117,7 @@
                             @endforeach
                         @else
                             <tr class="text-center" >
-                                <td colspan="5" class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11 bg-red-100 text-red-600">{{__('admin.no_result')}}</td>
+                                <td colspan="8" class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11 bg-red-100 text-red-600">{{__('admin.no_result')}}</td>
                             </tr>
                         @endif
                     </tbody>
@@ -127,7 +126,7 @@
                     {{$productPrices->links()}}
                 </div>
                 <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded mt-5" wire:click='actionAll("deleteAll")'>حذف کلی</button>
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mt-5" wire:click="actionAll('StateAllViaField','price_active')">تغییر وضعیت</button>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mt-5" wire:click="changeStateAll()">تغییر وضعیت</button>
             </div>
         </div>
     </div>

@@ -8,3 +8,7 @@ Route::middleware("guest")->group(function (){
     // Route::post("logout",[AuthController::class,"logout"])->name("logout");
 
 });
+
+Route::middleware("auth")->group(function(){
+    Route::get("logout",[AuthController::class,"logout"])->name('logout');
+});

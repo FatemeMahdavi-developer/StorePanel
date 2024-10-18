@@ -6,7 +6,7 @@
         <div class="flex flex-col gap-9">
         <div class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
             <div class="flex flex-col gap-5.5 p-6.5">
-            <x-base::admin.form submit="save" has_File="true">
+            <x-base::admin.form submit="save">
                 <div class="mb-5.5 flex flex-col gap-5.5 sm:flex-row">
                     <x-base::admin.input name="price" title="قیمت"></x-base::admin.input>
                     <x-base::admin.input name="discount" title="تخفیف"></x-base::admin.input>

@@ -12,11 +12,10 @@ class productPriceRequest
     {
         return [
             "price"=>['required','string','min:1','max:255'],
-            "price_code"=>['nullable','string','min:1','max:255'],
-            "number"=>['required','string','min:1','max:255'],
-            "numberlimit"=>['required','string','min:1','max:255'],
+            "price_code"=>['nullable','string','min:1','max:50'],
+            "number"=>['required','numeric'],
+            "numberlimit"=>['required','numeric','min:1'],
             "discount"=>['nullable','numeric','min:1','max:99','integer']
-
         ];
     }
 
