@@ -2,6 +2,7 @@
 
 namespace Modules\Product\Models\Admin;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -38,6 +39,14 @@ class productcat extends Model implements HasMedia
             'state' => StateEnum::class,
         ];
     }
+    public function scopeFilter(Builder $builder,array $params){
+        if(!empty($params['parent_id'])){
+            $builder->where('parent_id',$params['parent_id']);
+        }else{
+            $builder->where('parent_id',null);
+        }
+        return $builder;
+    }
     public function registerMediaConversions(?Media $media = null): void
     {
         $this
@@ -52,6 +61,6 @@ class productcat extends Model implements HasMedia
     }
 
     public function subCats(){
-        return $this->belongsTo(productcat::class,'parent_id');
+        return $this->hasMany(productcat::class,'parent_id');
     }
 }

@@ -4,6 +4,7 @@ namespace Modules\Product\Livewire\Admin\ProductBrand;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\Rule;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Modules\Base\Traits\UpdatingValidation;
@@ -11,7 +12,7 @@ use Modules\Product\Livewire\Validation\Admin\ProductBrandValidation;
 
 class Edit extends Component
 {
-    use WithFileUploads,AuthorizesRequests,UpdatingValidation;
+    use WithFileUploads,AuthorizesRequests,UpdatingValidation,LivewireAlert;
 
     public $seo_url,$seo_title,$title,$image,$pathImage,$note,$moduleTitle,$model;
 
@@ -26,7 +27,7 @@ class Edit extends Component
         $this->seo_url=$this->productbrand->seo_url;
         $this->seo_title=$this->productbrand->seo_title;
         $this->title=$this->productbrand->title;
-
+        
         $this->image=$productbrand->getMedia('image')->first()?->getUrl() ?? '';
         $this->note=$this->productbrand->note;
     }
@@ -68,7 +69,7 @@ class Edit extends Component
             $this->productbrand->addMedia($this->image)->toMediaCollection('image');
         }
         $this->reset('pathImage');
-        return back()->with('message', __('common.msg.successfully', [
+        $this->alert('success',__('common.msg.successfully', [
             'module' =>$this->moduleTitle
         ]));
     }

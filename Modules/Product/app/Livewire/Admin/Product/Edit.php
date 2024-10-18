@@ -79,7 +79,6 @@ class Edit extends Component
             $this->product->addMedia($this->image)->toMediaCollection('image');
         }
         $this->reset('pathImage');
-
         return  $this->alert('success',__('admin.added_successfully',['module' => $this->moduleTitle]), [
             'position' => 'top-end',
         ]);

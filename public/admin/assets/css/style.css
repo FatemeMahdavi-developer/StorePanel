@@ -7,3 +7,8 @@
 {
     min-height: 200px !important;
 }
+
+
+body.swal2-toast-shown .swal2-container {
+    min-width: 410px !important;
+}

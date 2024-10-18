@@ -39,7 +39,7 @@ class Index extends ActionAll
         $productbrand->update(['state'=>$state]);
     }
     public function productCat(){
-        return productcat::orderBy('id','DESC')->paginate($this->paginate);
+        return productcat::orderBy('id','DESC')->filter(request()->all())->with('subCats')->paginate($this->paginate);
     }
     public function render()
     {
