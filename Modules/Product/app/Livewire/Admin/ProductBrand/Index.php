@@ -10,7 +10,7 @@ class Index extends ActionAll
 {
     public $items=[];
     public $selectAll=false;
-    public int $paginate=3;
+    public int $paginate=13;
     public $moduleTitle;
 
     public function mount(){

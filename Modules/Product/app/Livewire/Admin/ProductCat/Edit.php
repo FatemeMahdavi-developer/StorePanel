@@ -23,7 +23,8 @@ class Edit extends Component
     public function mount($productcat)
     {
         $this->product_brands=ProductBrand::get(['id','title']);
-        $this->product_brands_selected=$productcat->product_cat_brand()->get()->pluck('id')->toArray();
+        // dd($this->product_brands);
+        $this->product_brands_selected=$productcat->product_cat_brand()->get()->pluck('title')->toArray();
         $this->moduleTitle=config('product.categoryModuleTitle');
         $this->model='product-cat';
         $this->productcat=$productcat;

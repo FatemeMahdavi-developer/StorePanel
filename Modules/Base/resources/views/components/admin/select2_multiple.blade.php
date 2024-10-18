@@ -61,54 +61,20 @@
             class="mb-2 flex rounded border border-stroke py-2 pl-3 pr-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input"
             >
             <div class="flex flex-auto flex-wrap gap-3">
-                <template
-                x-for="(option,index) in selected"
-                :key="index"
-                >
-                <div
-                    class="my-1.5 flex items-center justify-center rounded border-[.5px] border-stroke bg-gray px-2.5 py-1.5 text-sm font-medium dark:border-strokedark dark:bg-white/30"
-                >
-                    <div
-                    class="max-w-full flex-initial"
-                    x-model="options[option]"
-                    x-text="options[option].text"
-                    ></div>
-                    <div
-                    class="flex flex-auto flex-row-reverse"
-                    >
-                    <div-1
-                        @click="remove(index,option)"
-                        class="cursor-pointer pl-2 hover:text-danger"
-                    >
-                        <svg
-                        class="fill-current"
-                        role="button"
-                        width="12"
-                        height="12"
-                        viewBox="0 0 12 12"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        >
-                        <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M9.35355 3.35355C9.54882 3.15829 9.54882 2.84171 9.35355 2.64645C9.15829 2.45118 8.84171 2.45118 8.64645 2.64645L6 5.29289L3.35355 2.64645C3.15829 2.45118 2.84171 2.45118 2.64645 2.64645C2.45118 2.84171 2.45118 3.15829 2.64645 3.35355L5.29289 6L2.64645 8.64645C2.45118 8.84171 2.45118 9.15829 2.64645 9.35355C2.84171 9.54882 3.15829 9.54882 3.35355 9.35355L6 6.70711L8.64645 9.35355C8.84171 9.54882 9.15829 9.54882 9.35355 9.35355C9.54882 9.15829 9.54882 8.84171 9.35355 8.64645L6.70711 6L9.35355 3.35355Z"
-                            fill="currentColor"
-                        ></path>
+                <template x-for="(option,index) in selected" :key="index">
+                <div class="my-1.5 flex items-center justify-center rounded border-[.5px] border-stroke bg-gray px-2.5 py-1.5 text-sm font-medium dark:border-strokedark dark:bg-white/30">
+                    <div class="max-w-full flex-initial" x-model="options[option]" x-text="options[option].text" ></div>
+                    <div class="flex flex-auto flex-row-reverse">
+                    {{-- <div-1 @click="remove(index,option)" class="cursor-pointer pl-2 hover:text-danger">
+                        <svg class="fill-current" role="button" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.35355 3.35355C9.54882 3.15829 9.54882 2.84171 9.35355 2.64645C9.15829 2.45118 8.84171 2.45118 8.64645 2.64645L6 5.29289L3.35355 2.64645C3.15829 2.45118 2.84171 2.45118 2.64645 2.64645C2.45118 2.84171 2.45118 3.15829 2.64645 3.35355L5.29289 6L2.64645 8.64645C2.45118 8.84171 2.45118 9.15829 2.64645 9.35355C2.84171 9.54882 3.15829 9.54882 3.35355 9.35355L6 6.70711L8.64645 9.35355C8.84171 9.54882 9.15829 9.54882 9.35355 9.35355C9.54882 9.15829 9.54882 8.84171 9.35355 8.64645L6.70711 6L9.35355 3.35355Z" fill="currentColor"></path>
                         </svg>
-                    </div>
+                    </div> --}}
                     </div>
                 </div>
                 </template>
-                <div
-                x-show="selected.length == 0"
-                class="flex-1"
-                >
-                <input
-                    placeholder="Select a option"
-                    class="h-full w-full appearance-none bg-transparent p-1 px-2 outline-none"
-                    :value="selectedValues()"
-                />
+                <div x-show="selected.length == 0" class="flex-1" >
+                    <input placeholder="Select a option" class="h-full w-full appearance-none bg-transparent p-1 px-2 outline-none" :value="selectedValues()" />
                 </div>
             </div>
             <div
@@ -183,6 +149,63 @@
 </div>
 <script>
     function dropdown() {
+        console.log(@json($value));
+
+      return {
+        options: [],
+        selected: @json($value),
+        show: false,
+        open() {
+          this.show = true;
+        },
+        close() {
+          this.show = false;
+        },
+        isOpen() {
+          return this.show === true;
+        },
+        select(index, event) {
+          if (!this.options[index].selected) {
+            this.options[index].selected = true;
+            this.options[index].element = event.target;
+            this.selected.push(index);
+          } else {
+            this.selected.splice(this.selected.lastIndexOf(index), 1);
+            this.options[index].selected = false;
+          }
+          @this.set("{{$name}}", this.selectedValues());
+        },
+        loadOptions() {
+          const options = document.getElementById("select").options;
+          for (let i = 0; i < options.length; i++) {
+            this.options.push({
+              value: options[i].value,
+              text: options[i].innerText,
+              selected:
+                options[i].getAttribute("selected") != null
+                  ? options[i].getAttribute("selected")
+                  : false,
+            });
+          }
+        },
+        selectedValues() {
+          // Return the selected option values as an array
+          return this.selected.map((index) => {
+            return this.options[index].value;
+          });
+        },
+      };
+    }
+</script>
+
+
+
+
+
+{{-- <script>
+    function dropdown() {
+        console.log(@json($value));
+
       return {
         options: [],
         selected: @json($value),
@@ -235,4 +258,10 @@
         },
       };
     }
-</script>
+</script> --}}
+
+
+
+
+
+

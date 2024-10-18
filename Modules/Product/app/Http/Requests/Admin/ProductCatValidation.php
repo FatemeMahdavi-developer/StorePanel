@@ -16,7 +16,7 @@ class ProductCatValidation
         return [
             'seo_url' => ['required', 'string', Rule::unique('productcats', 'seo_url')],
             'seo_title' => ['required', 'min:3', 'max:100'],
-            'parent_id' => ['required', 'string', Rule::exists('productcats','id')],
+            'parent_id' => ['nullable', 'string', Rule::exists('productcats','id')],
             'title' => ['required', 'min:3'],
             'image' => ['nullable', 'image', 'mimes:png,jpeg,gif,svg', 'max:1024'],
             'note' => ['nullable', 'string'],

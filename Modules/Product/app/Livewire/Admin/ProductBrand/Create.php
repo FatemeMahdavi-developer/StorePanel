@@ -5,6 +5,7 @@ namespace Modules\Product\Livewire\Admin\ProductBrand;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 use Illuminate\Support\Str;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithFileUploads;
 use Modules\Base\Enums\StateEnum;
 use Modules\Base\Traits\UpdatingValidation;
@@ -13,7 +14,7 @@ use Modules\Product\Models\Admin\ProductBrand;
 
 class Create extends Component
 {
-    use WithFileUploads,AuthorizesRequests,UpdatingValidation;
+    use WithFileUploads,AuthorizesRequests,UpdatingValidation,LivewireAlert;
 
     public $seo_url,$seo_title,$title,$image,$pathImage,$note,$moduleTitle,$model;
 
@@ -40,9 +41,9 @@ class Create extends Component
         if(!empty($this->image)){
             $productBrand->addMedia($this->image)->toMediaCollection('image');
         }
-        $this->reset();
-        return back()->with('message', __('admin.added_successfully',[
-            'module' => $this->moduleTitle
+        $this->resetExcept(['moduleTitle']);
+        $this->alert('success',__('common.msg.added', [
+            'module' =>$this->moduleTitle
         ]));
     }
 
