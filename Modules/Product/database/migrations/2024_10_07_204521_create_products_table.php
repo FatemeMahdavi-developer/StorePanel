@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('pic')->nullable();
             $table->text('note')->nullable();
             $table->foreignId("cat_id")->references("id")->on('productcats')->onDelete("cascade");
-            $table->string("brand_id")->references("id")->on('product_brands')->onDelete("cascade");
+            $table->string("brand_id")->nullable()->references("id")->on('product_brands')->onDelete("cascade");
             $table->softDeletes();
             $table->timestamps();
         });

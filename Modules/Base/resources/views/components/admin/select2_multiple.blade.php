@@ -9,27 +9,6 @@
     'placeholder' => '',
     'class' => ''
 ])
-{{--
-<div wire:ignore class="form-group {{$class}}">
-    <label for="{{$name}}" class="block text-sm font-medium text-gray-700">{{$title}}</label>
-    <select multiple wire:model="{{$name}}" id="{{$name}}" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-        @if(!empty($placeholder))
-            <option value="">{{$placeholder}}</option>
-        @endif
-        @foreach($items as $item)
-            <option value="{{$item->id}}">{{$item->title}}</option>
-            <x-base::admin.sub_option
-                :options="$item"
-                :method="$sub_method"
-                :$value >
-            </x-base::admin.sub_option>
-        @endforeach
-    </select>
-</div>
-
---}}
-
-
 
 <div class="{{$class}}">
     @if($title)
@@ -40,7 +19,7 @@
         <option value="">{{$placeholder}}</option>
         @endif
         @foreach($items as $item)
-        <option value="{{$item["id"]}}">{{$item["title"]}}</option>
+            <option value="{{$key}}">{{$item["title"]}}</option>
         @endforeach
     </select>
     <div
@@ -56,10 +35,7 @@
     <div class="relative z-20 inline-block w-full">
         <div class="relative flex flex-col items-center">
         <div @click="open" class="w-full">
-            <di],
-            selected:v
-            class="mb-2 flex rounded border border-stroke py-2 pl-3 pr-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input"
-            >
+            <div selected:v class="mb-2 flex rounded border border-stroke py-2 pl-3 pr-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input" >
             <div class="flex flex-auto flex-wrap gap-3">
                 <template x-for="(option,index) in selected" :key="index">
                 <div class="my-1.5 flex items-center justify-center rounded border-[.5px] border-stroke bg-gray px-2.5 py-1.5 text-sm font-medium dark:border-strokedark dark:bg-white/30">
@@ -149,8 +125,7 @@
 </div>
 <script>
     function dropdown() {
-        console.log(@json($value));
-
+        // alert(@json($value))
       return {
         options: [],
         selected: @json($value),
@@ -190,6 +165,7 @@
         },
         selectedValues() {
           // Return the selected option values as an array
+          
           return this.selected.map((index) => {
             return this.options[index].value;
           });

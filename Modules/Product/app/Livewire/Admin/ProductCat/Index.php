@@ -19,6 +19,7 @@ class Index extends ActionAll
     public function checkAll()
     {
         $this->items = $this->selectAll ? $this->productCat()->pluck('id')->toArray() : [];
+        // dd($this->items);
     }
 
     public function actionAll($action,$field=''){

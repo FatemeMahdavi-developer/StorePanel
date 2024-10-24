@@ -20,7 +20,7 @@ class productValidation
             'image' => ['nullable', 'image', 'mimes:png,jpeg,gif,svg', 'max:1024'],
             'note' => ['nullable', 'string'],
             'cat_id'=>['required',Rule::exists('productcats','id')],
-            'brand_id'=>['required',Rule::exists('product_brands','id')]
+            'brand_id'=>['nullable',Rule::exists('product_brands','id')]
         ];
     }
 

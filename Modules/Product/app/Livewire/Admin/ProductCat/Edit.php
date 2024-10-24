@@ -23,8 +23,7 @@ class Edit extends Component
     public function mount($productcat)
     {
         $this->product_brands=ProductBrand::get(['id','title']);
-        // dd($this->product_brands);
-        $this->product_brands_selected=$productcat->product_cat_brand()->get()->pluck('title')->toArray();
+        $this->product_brands_selected=$productcat->product_cat_brand()->get()->pluck('id')->toArray();
         $this->moduleTitle=config('product.categoryModuleTitle');
         $this->model='product-cat';
         $this->productcat=$productcat;
@@ -81,6 +80,9 @@ class Edit extends Component
             $this->productcat->media()->where('collection_name','image')->delete();
             $this->productcat->addMedia($this->image)->toMediaCollection('image');
         }
+        dd($this->product_brands_selected);
+        $this->productcat->product_cat_brand()->sync($this->product_brands_selected);
+
         $this->reset('pathImage');
 
         return $this->alert('success',__('admin.edited_successfully',['module' => $this->moduleTitle]), [
