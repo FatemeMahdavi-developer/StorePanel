@@ -6,6 +6,6 @@ return [
     'categoryModuleTitle'=>env('categoryModuleTitle','دسته بندی'),
     'productModuleTitle'=>env('productModuleTitle','محصول'),
     'priceModuleTitle'=>env('productModuleTitle','قیمت'),
-    'questionCatModuleTitle'=>env('questionCatModuleTitle','دسته بندی پارامتر')
-
+    'questionCatModuleTitle'=>env('questionCatModuleTitle','دسته بندی پارامتر'),
+    'questionModuleTitle'=>env('questionModuleTitle','پارامتر')
 ];

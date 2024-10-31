@@ -209,6 +209,7 @@ return [
         'number'=>'تعداد',
         'discount'=>'تخفیف',
         'numberlimit'=>'حداقل موجودی',
+        'product_cats'=>'دسته بندی محصول'
     ],
 
 ];

@@ -11,18 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('question_cats', function (Blueprint $table) {
+        Schema::create('question', function (Blueprint $table) {
             $table->id();
+            makeDefaultColumn($table);
             $table->string('title');
-            $table->softDeletes();
-            $table->timestamps();
-        });
-
-        Schema::create('productcat_question_cat', function (Blueprint $table) {
-            $table->unsignedBigInteger('productcat_id');
+            $table->string('type');
             $table->unsignedBigInteger('question_cat_id');
-            $table->foreign('productcat_id')->references('id')->on('productcats')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('question_cat_id')->references('id')->on('question_cats')->onUpdate('cascade')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -31,8 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('productcat_question_cat');
-        Schema::dropIfExists('question_cats');
-
+        Schema::dropIfExists('question');
     }
 };

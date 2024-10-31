@@ -4,19 +4,23 @@ namespace Modules\Product\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Base\Traits\DateConvert;
+
 // use Modules\Product\Database\Factories\Admin/questionCatFactory;
 
 class questionCat extends Model
 {
-    use HasFactory;
+    use HasFactory,SoftDeletes,DateConvert;
 
     /**
      * The attributes that are mass assignable.
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'title'
+    ];
 
-    // protected static function newFactory(): Admin/questionCatFactory
-    // {
-    //     // return Admin/questionCatFactory::new();
-    // }
+    public function questionCats_productCats(){
+        return $this->belongsToMany(productcat::class);
+    }
 }

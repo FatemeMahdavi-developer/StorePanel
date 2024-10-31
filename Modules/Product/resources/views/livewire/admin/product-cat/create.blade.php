@@ -17,6 +17,7 @@
                   <x-base::admin.input name="seo_url" title="آدرس سئو" ></x-base::admin.input>
                   <x-base::admin.input name="seo_title" title="عنوان سئو" ></x-base::admin.input>
               </div>
+              
               <div class="mb-5.5 flex flex-col gap-5.5 sm:flex-row">
                   <x-base::admin.upload_file name="image" title="تصویر" :updatingValue="$pathImage" >
                       @slot('content')

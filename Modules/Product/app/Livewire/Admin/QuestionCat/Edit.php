@@ -9,15 +9,21 @@ use Modules\Product\Http\Requests\Admin\QuestionCatValidation;
 use Modules\Product\Models\Admin\productcat;
 use Modules\Product\Models\Admin\questionCat;
 
-class Create extends Component
+class Edit extends Component
 {
     use LivewireAlert,UpdatingValidation;
     public $title,$moduleTitle,$model;
     public $product_cats=[];
 
-    public function mount(){
+    public $questioncat;
+
+    public function mount(questionCat $questioncat){
         $this->moduleTitle=config('product.questionCatModuleTitle');
         $this->model=questionCat::class;
+        $this->questioncat=$questioncat;
+        $this->title=$questioncat->title;
+
+        $this->product_cats=$questioncat->questionCats_productCats()->pluck('id')->toArray();
     }
 
     public function productCat(){
@@ -29,22 +35,21 @@ class Create extends Component
         return QuestionCatValidation::class;
     }
 
-    public function save(){
+    public function update(){
         $inputs=$this->validate();
-        $questionCat=questionCat::create($inputs);
 
-        $questionCat->questionCats_productCats()->sync($inputs['product_cats']);
+        $this->questioncat->update($inputs);
 
-        $this->resetExcept(['moduleTitle','model','productCat']);
+        $this->questioncat->questionCats_productCats()->sync($inputs['product_cats']);
 
-        return $this->alert('success',__('admin.added_successfully',['module' => $this->moduleTitle]), [
+        return $this->alert('success',__('admin.edited_successfully',['module' => $this->moduleTitle]), [
             'position' => 'top-end',
         ]);
     }
 
     public function render()
     {
-        return view('product::livewire.admin.question-cat.create',[
+        return view('product::livewire.admin.question-cat.edit',[
             'productCat'=>$this->productCat(),
             'product_cats'=>$this->product_cats
         ]);

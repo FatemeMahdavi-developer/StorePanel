@@ -80,7 +80,6 @@ class Edit extends Component
             $this->productcat->media()->where('collection_name','image')->delete();
             $this->productcat->addMedia($this->image)->toMediaCollection('image');
         }
-        dd($this->product_brands_selected);
         $this->productcat->product_cat_brand()->sync($this->product_brands_selected);
 
         $this->reset('pathImage');
