@@ -59,7 +59,9 @@ class productcat extends Model implements HasMedia
     {
         return $this->belongsToMany(ProductBrand::class);
     }
-
+    public function questionCat(){
+        return $this->belongsToMany(questionCat::class);
+    }
     public function subCats(){
         return $this->hasMany(productcat::class,'parent_id');
     }

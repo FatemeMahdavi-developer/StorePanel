@@ -23,7 +23,7 @@ class Edit extends Component
         $this->questioncat=$questioncat;
         $this->title=$questioncat->title;
 
-        $this->product_cats=$questioncat->questionCats_productCats()->pluck('id')->toArray();
+        $this->product_cats=$questioncat->productCat()->pluck('id')->toArray();
     }
 
     public function productCat(){
@@ -40,7 +40,7 @@ class Edit extends Component
 
         $this->questioncat->update($inputs);
 
-        $this->questioncat->questionCats_productCats()->sync($inputs['product_cats']);
+        $this->questioncat->productCat()->sync($inputs['product_cats']);
 
         return $this->alert('success',__('admin.edited_successfully',['module' => $this->moduleTitle]), [
             'position' => 'top-end',

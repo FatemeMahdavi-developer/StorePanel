@@ -29,10 +29,10 @@
                       @endslot
                   </x-base::admin.input>
               </div>
-
-              <x-base::admin.select_recursive name="parent_id" first_option="دسته بندی اصلی" title="دسته بندی" :options="$productCats" ></x-base::admin.select_recursive>
-
-              <x-base::admin.select2_multiple name="product_brands_selected" title="برند" :items="$product_brands" ></x-base::admin.select2_multiple>
+              <div class="mb-5.5 flex flex-col gap-5.5 sm:flex-row">
+                <x-base::admin.select_recursive name="parent_id" first_option="دسته بندی اصلی" title="دسته بندی" :options="$productCats" ></x-base::admin.select_recursive>
+                <x-base::admin.select2_multiple name="product_brands_selected" placeholder="انتخاب کنید" title="برند" :items="$product_brands" ></x-base::admin.select2_multiple>
+              </div>
 
               <x-base::admin.ckeditor name="note" title="توضیحات"></x-base::admin.ckeditor>
 

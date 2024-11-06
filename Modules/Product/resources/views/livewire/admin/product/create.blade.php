@@ -29,10 +29,8 @@
                         @endslot
                     </x-base::admin.input>
                 </div>
-
                 <div class="mb-5.5 flex flex-col gap-5.5 sm:flex-row">
                     <x-base::admin.select_recursive choose="انتخاب کنید" name="cat_id" label="دسته بندی" :options="$productCats"></x-base::admin.select_recursive>
-
                     <div class="flex flex-col w-full">
                         <div class="w-full">
                             <label class="mb-3 block text-sm font-medium text-black dark:text-white">برند</label>
@@ -57,7 +55,27 @@
                         </div>
                     </div>
                 </div>
-
+                @if(isset($questionCat[0]))
+                    @foreach ($questionCat as $cat)
+                    <div class="border border-[#eee] p-3 mb-3">
+                        <div>{{$cat['title']}}</div>
+                        @foreach ($cat->questions as $question)
+                            @if ($question->type->value==Modules\Product\Enums\TypeEnum::INPUT->value)
+                                <x-base::admin.input name="questuin_answer[{{$question->id}}]" title="{{$question->title}}" ></x-base::admin.input>
+                            @endif
+                            @if ($question->type->value==Modules\Product\Enums\TypeEnum::CHECKBOX->value)
+                                {{-- <div>{{$question->title}}</div> --}}
+                            @endif
+                            @if ($question->type->value==Modules\Product\Enums\TypeEnum::SELECT->value)
+                                {{-- <div>{{$question->title}}</div> --}}
+                            @endif
+                            @if ($question->type->value==Modules\Product\Enums\TypeEnum::TEXTAREA->value)
+                                <x-base::admin.textarea name="questuin_answer[{{$question->id}}]" title="{{$question->title}}" ></x-base::admin.input>
+                            @endif
+                        @endforeach
+                    </div>
+                    @endforeach
+                @endif
                 <x-base::admin.ckeditor name="note" title="توضیحات"></x-base::admin.ckeditor>
 
                 <x-base::admin.button title="ارسال" ></x-base::admin.button>

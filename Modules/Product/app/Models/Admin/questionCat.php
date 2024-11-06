@@ -19,8 +19,11 @@ class questionCat extends Model
     protected $fillable = [
         'title'
     ];
-
-    public function questionCats_productCats(){
+    public function productCat(){
         return $this->belongsToMany(productcat::class);
+    }
+
+    public function questions(){
+        return $this->hasMany(Question::class);
     }
 }

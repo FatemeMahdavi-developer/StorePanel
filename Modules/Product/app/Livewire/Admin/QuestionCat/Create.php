@@ -33,7 +33,7 @@ class Create extends Component
         $inputs=$this->validate();
         $questionCat=questionCat::create($inputs);
 
-        $questionCat->questionCats_productCats()->sync($inputs['product_cats']);
+        $questionCat->productCat()->sync($inputs['product_cats']);
 
         $this->resetExcept(['moduleTitle','model','productCat']);
 
