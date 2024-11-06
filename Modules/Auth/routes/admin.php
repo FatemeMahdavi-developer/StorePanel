@@ -12,3 +12,4 @@ Route::middleware("guest")->group(function (){
 Route::middleware("auth")->group(function(){
     Route::get("logout",[AuthController::class,"logout"])->name('logout');
 });
+ 

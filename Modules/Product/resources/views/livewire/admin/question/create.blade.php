@@ -11,14 +11,14 @@
                 <div class="mb-5.5 flex flex-col gap-5.5 sm:flex-row">
                     <x-base::admin.input name="title" title="عنوان" isLive="true"></x-base::admin.input>
                 </div>
-
-                <x-base::admin.select name="question_cat_id" title="دسته بندی پارامتر" :items="$questionCat" :value="$question_cats" ></x-base::admin.select>
-
+                <div class="mb-5.5 flex flex-col gap-5.5 sm:flex-row">
+                    <x-base::admin.select name="question_cat_id" title="دسته بندی پارامتر" :items="$questionCat" :value="$question_cats" ></x-base::admin.select>
+                </div>
                 <x-base::admin.select name="type" title="نوع" :items="$typeItems" ></x-base::admin.select>
                 <div x-data="{ items: @entangle('items') }" @submit.prevent>
                     <template x-for="(item,index) in items" :key="index">
                         <div class="w-full sm:w-1/2" x-transition>
-                            <label :for="'items-' + index" class="mb-3 block text-sm font-medium text-black dark:text-white" >پاسخ <span x-text="index + 1"></span></label>
+                            <label :for="'items-' + index" class="my-3 block" >پاسخ <span x-text="index + 1"></span></label>
                             <input type="text" :id="'items-' + index" x-model="items[index]" class="w-full rounded border border-stroke bg-gray px-4.5 py-3 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" >
                             @foreach ($items as $k=>$v )
                                 <div x-show="index === {{ $k }}">
@@ -30,7 +30,7 @@
                         </div>
                     </template>
                     <button type="button" @click="items.pop('')" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2 mb-5" x-show="items.length > 0">حذف</button>
-                    <button type="button" @click="items.push('')" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-2 mb-5" >افزودن</button>
+                    <button type="button" @click="items.push('')" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-2 mb-5 mt-5" >افزودن</button>
                 </div>
                 <x-base::admin.button title="ارسال" ></x-base::admin.button>
             </x-base::admin.form>

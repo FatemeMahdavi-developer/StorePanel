@@ -46,7 +46,7 @@
                                     </td>
                                     <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
                                         <div class="flex items-center justify-center space-x-3.5">
-                                            <a wire:navigate href="{{route("admin.productcat.index",['parent_id'=>$productCat->id])}}" class="rounded-md bg-blue-500 hover:bg-blue-700 border-blue-700  text-white px-2 py-2 mx-2 " >
+                                            <a wire:navigate href="{{route("admin.productcat.index",['parent_id'=>$productCat->id])}}" class="rounded-md bg-blue-500 hover:bg-blue-700 border-blue-700  text-white px-2 py-2 mx-2 ml-3" >
                                                 زیر دسته بندی : {{$productCat->subCats()->count()}}
                                             </a>
                                             <a wire:navigate href="{{route("admin.productcat.edit",['productcat'=>$productCat->id])}}" class="rounded-md bg-green-500 hover:bg-green-700 border-green-700 px-2 py-2" >

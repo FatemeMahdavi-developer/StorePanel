@@ -11,8 +11,8 @@ use Illuminate\Support\Str;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Modules\Base\Enums\StateEnum;
 use Modules\Product\Http\Requests\Admin\productValidation;
-use Modules\Product\Models\Admin\ProductBrand;
 use Modules\Product\Models\Admin\productcat;
+use Modules\Product\Models\Admin\questionCat;
 
 class Create extends Component
 {
@@ -20,7 +20,7 @@ class Create extends Component
 
     public $productBrands=[];
     public $seo_url,$seo_title,$cat_id,$title,$image,$pathImage,$note,$moduleTitle,$model,$brand_id;
-
+    public $questionCat,$questuin_answer;
     public function mount(){
         $this->moduleTitle=config('product.productModuleTitle');
         $this->model=product::class;
@@ -38,7 +38,10 @@ class Create extends Component
     public function updatingCatid($value)
     {
         $productcat=productcat::find($value);
-        $this->productBrands=$productcat->product_cat_brand->pluck('title','id')->toArray();
+        if(!empty($value)){
+            $this->questionCat=$productcat->questionCat;
+            $this->productBrands=$productcat->product_cat_brand->pluck('title','id')->toArray();
+        }
     }
 
     public function productCats(){
@@ -60,7 +63,6 @@ class Create extends Component
             'position' => 'top-end',
         ]);
     }
-
     public function render()
     {
         return view('product::livewire.admin.product.create',[

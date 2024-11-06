@@ -7,7 +7,7 @@
     'value' => [],
     'sub_method' => '',
     'placeholder' => '',
-    'class' => ''
+    'class' => 'w-full'
 ])
 
 <div class="{{$class}}">
@@ -50,7 +50,7 @@
                 </div>
                 </template>
                 <div x-show="selected.length == 0" class="flex-1" >
-                    <input placeholder="Select a option" class="h-full w-full appearance-none bg-transparent p-1 px-2 outline-none" :value="selectedValues()" />
+                    <input @if($placeholder)placeholder="{{$placeholder}}"@endif class="h-full w-full appearance-none bg-transparent p-1 px-2 outline-none" :value="selectedValues()" />
                 </div>
             </div>
             <div

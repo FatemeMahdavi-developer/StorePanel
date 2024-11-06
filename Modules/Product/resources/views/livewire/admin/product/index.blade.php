@@ -89,7 +89,7 @@
                             @endforeach
                         @else
                             <tr class="text-center" >
-                                <td colspan="5" class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11 bg-red-100 text-red-600">{{__('admin.no_result')}}</td>
+                                <td colspan="6" class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11 bg-red-100 text-red-600">{{__('admin.no_result')}}</td>
                             </tr>
                         @endif
                     </tbody>

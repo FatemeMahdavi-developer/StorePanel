@@ -1,7 +1,6 @@
-@props(['title'=>'','name'=>'','items'=>[],'key'=>'','val'=>'','value'=>'','placeholder'=>'انتخاب کنید','class'=>'w-50','ClickAction'=>'','select2'=>true,'id'=>''])
-
-<div class="form-group {{$class}}" @if($select2===true) wire:ignore @endif>
-    @if($title) <label>{{$title}}</label> @endif
+@props(['title'=>'','name'=>'','items'=>[],'key'=>'','val'=>'','value'=>'','placeholder'=>'انتخاب کنید','class'=>'w-full','ClickAction'=>'','select2'=>true,'id'=>''])
+<div class="flex flex-col w-1/2" >
+    @if($title)<label style="margin: 10px 0">{{$title}}</label>@endif
     <select @if($ClickAction) wire:change="{{$ClickAction}}" @endif wire:model="{{$name}}" @if($id) id="{{$id}}" @else id="{{$name}}" @endif class="form-control">
         <option value="">{{$placeholder}}</option>
         @foreach($items as $key_item => $value_item)
@@ -10,9 +9,9 @@
             </option>
         @endforeach
     </select>
-</div>
-<div>
-    @error($name)<span class="text text-danger">{{$message}}</span>@enderror
+    <div>
+        @error($name)<span class="text text-danger">{{$message}}</span>@enderror
+    </div>
 </div>
 
 
