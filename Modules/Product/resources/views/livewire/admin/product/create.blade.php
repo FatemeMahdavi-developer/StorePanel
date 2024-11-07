@@ -57,23 +57,24 @@
                 </div>
                 @if(isset($questionCat[0]))
                     @foreach ($questionCat as $cat)
+                    @if($cat->questions->count() > 0)
                     <div class="border border-[#eee] p-3 mb-3">
                         <div>{{$cat['title']}}</div>
                         @foreach ($cat->questions as $question)
-                            @if ($question->type->value==Modules\Product\Enums\TypeEnum::INPUT->value)
+                            @if($question->type->value==Modules\Product\Enums\TypeEnum::INPUT->value)
                                 <x-base::admin.input name="questuin_answer[{{$question->id}}]" title="{{$question->title}}" ></x-base::admin.input>
+                            @elseif($question->type->value==Modules\Product\Enums\TypeEnum::CHECKBOX->value)
+                            @if($question->first()->items)
+                                <x-base::admin.select  name="questuin_answer[{{$question->id}}]" title="{{$question->title}}" :items="$question->first()->items->pluck('value','id')->toArray()"></x-base::admin.select>
                             @endif
-                            @if ($question->type->value==Modules\Product\Enums\TypeEnum::CHECKBOX->value)
-                                {{-- <div>{{$question->title}}</div> --}}
-                            @endif
-                            @if ($question->type->value==Modules\Product\Enums\TypeEnum::SELECT->value)
-                                {{-- <div>{{$question->title}}</div> --}}
-                            @endif
-                            @if ($question->type->value==Modules\Product\Enums\TypeEnum::TEXTAREA->value)
+                            @elseif($question->type->value==Modules\Product\Enums\TypeEnum::SELECT->value)
+                                <div>{{$question->title}}</div>
+                            @elseif($question->type->value==Modules\Product\Enums\TypeEnum::TEXTAREA->value)
                                 <x-base::admin.textarea name="questuin_answer[{{$question->id}}]" title="{{$question->title}}" ></x-base::admin.input>
                             @endif
                         @endforeach
                     </div>
+                    @endif
                     @endforeach
                 @endif
                 <x-base::admin.ckeditor name="note" title="توضیحات"></x-base::admin.ckeditor>
